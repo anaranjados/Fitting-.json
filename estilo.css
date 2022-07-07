@@ -1,0 +1,69 @@
+body {
+  margin: 0 3%;
+  background-color: lightblue;
+}
+
+table {
+  width: 100%;
+  padding: 1rem;
+  border-width: 0;
+}
+table th {
+  color: darkslategrey;
+}
+table thead {
+  color: darkred;
+}
+table thead #menu_btn {
+  cursor: pointer;
+}
+table tbody tr {
+  margin-bottom: 0.5rem;
+  background-color: lightbrown;
+}
+table tbody tr td {
+  padding: 1rem 0;
+}
+table tbody tr td:first-of-type {
+  display: none;
+}
+table tbody tr td button {
+  visibility: hidden;
+  cursor: pointer;
+}
+
+nav {
+  position: absolute;
+  top: 20%;
+  width: 40%;
+  left: 30%;
+  background-color: cyan;
+  border-radius: 25px;
+  padding: 1rem;
+  z-index: 2;
+}
+nav #menu_general div {
+  display: flex;
+}
+nav #menu_general svg {
+  cursor: pointer;
+}
+nav #contact_form input {
+  border-radius: 0.5rem;
+}
+nav #contact_form h3, nav #contact_form div.act {
+  text-align: center;
+}
+nav #contact_form button {
+  cursor: pointer;
+}
+
+#shadow {
+  background-color: rgba(56, 56, 56, 0.6);
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  top: 0;
+  left: 0;
+}/*# sourceMappingURL=estilo.css.map */

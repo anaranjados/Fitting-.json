@@ -1,0 +1,71 @@
+$w-column-5: 5%;
+$w-column-15: 15%;
+$w-column-20: 20%;
+$w-column-30: 30%;
+
+// Columns
+.col-1-avatar {
+    width: $w-column-5;
+}
+.col-2-name {
+    width: $w-column-20;
+}
+.col-3-tel {
+    width: $w-column-15;
+}
+.col-4-addr {
+    width: $w-column-30;
+}
+.col-5-email {
+    width: $w-column-15;
+}
+.col-6-edit {
+    width: $w-column-15;
+}
+
+
+body {
+    margin: 0;
+    overflow-x: hidden;
+    width: 100%;
+}
+
+header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    div.h-row-1 {
+        padding: .5%;
+        background-color: lightseagreen;
+        display: flex;
+        & > * {
+            width: 33.3%
+        }
+        input {
+            border-radius: .5rem;
+            padding: 0 1rem;
+            background-color: aliceblue;
+        }
+        h1 {
+            font-size: 1rem;
+            text-align: center;
+        }
+        svg#menu {
+            height: 1rem;
+            padding: 1rem;
+            cursor: pointer;
+        }    
+    }
+    div.h-row-2 {
+        display: flex;
+        padding: .5rem 2rem;
+        background-color: #9ef4ef;
+        svg { height: 1rem }
+    }
+}
+
+
+main {
+    background-color: blanchedalmond;
+    height: 100%;
+}

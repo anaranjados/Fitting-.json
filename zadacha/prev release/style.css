@@ -1,0 +1,70 @@
+.col-1-avatar {
+  width: 5%;
+}
+
+.col-2-name {
+  width: 20%;
+}
+
+.col-3-tel {
+  width: 15%;
+}
+
+.col-4-addr {
+  width: 30%;
+}
+
+.col-5-email {
+  width: 15%;
+}
+
+.col-6-edit {
+  width: 15%;
+}
+
+body {
+  margin: 0;
+  overflow-x: hidden;
+  width: 100%;
+}
+
+header {
+  position: fixed;
+  width: 100%;
+  top: 0;
+}
+header div.h-row-1 {
+  padding: 0.5%;
+  background-color: lightseagreen;
+  display: flex;
+}
+header div.h-row-1 > * {
+  width: 33.3%;
+}
+header div.h-row-1 input {
+  border-radius: 0.5rem;
+  padding: 0 1rem;
+  background-color: aliceblue;
+}
+header div.h-row-1 h1 {
+  font-size: 1rem;
+  text-align: center;
+}
+header div.h-row-1 svg#menu {
+  height: 1rem;
+  padding: 1rem;
+  cursor: pointer;
+}
+header div.h-row-2 {
+  display: flex;
+  padding: 0.5rem 2rem;
+  background-color: #9ef4ef;
+}
+header div.h-row-2 svg {
+  height: 1rem;
+}
+
+main {
+  background-color: blanchedalmond;
+  height: 100%;
+}/*# sourceMappingURL=style.css.map */

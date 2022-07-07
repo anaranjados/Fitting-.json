@@ -1,0 +1,50 @@
+{
+	"contacts": [
+		{
+			"id": 1,
+			"name": "Anna",
+			"surname": "Lapushkina",
+			"lastname": "Olegovna",
+			"Telephone": "+7 8134 385123",
+			"Company": "Stolovaya #1",
+			"Address": "Novosoborsk, 10 part siezd, apt.94",
+			"Email": "a.lap@sibir.su"
+		},{
+			"id": 2,
+			"name": "Katusha",
+			"surname": "Ivanova",
+			"lastname": "Konstantinovna",
+			"Telephone": "+4 8134 385123",
+			"Company": "Hlebopek",
+			"Address": "Vipori, 10 part siezd, apt.72",
+			"Email": "k.ivan@sibir.su"
+		},{
+			"id": 3,
+			"name": "Helena",
+			"surname": "Birzevaya",
+			"lastname": "Alexandrovna",
+			"Telephone": "+34 8134 385123",
+			"Company": "Malyar",
+			"Address": "Vladivostok, 10 part siezd, apt.94",
+			"Email": "h.birz@sibir.su"
+		},{
+			"id": 4,
+			"name": "Nastusha",
+			"surname": "Jivrich",
+			"lastname": "Bulatovna",
+			"Telephone": "+67 8134 385123",
+			"Company": "Kinolog",
+			"Address": "Sochi, 10 part siezd, apt.94",
+			"Email": "a.lap@sibir.su"
+		},{
+			"id": 5,
+			"name": "Milana",
+			"surname": "Starovernaya",
+			"lastname": "Alexeevna",
+			"Telephone": "+54 8134 385123",
+			"Company": "Militsioner",
+			"Address": "Kiselevsk, 10 part siezd, apt.94",
+			"Email": "a.lap@sibir.su"
+		},
+	]
+}

@@ -1,0 +1,73 @@
+@mixin cursor() {
+    cursor: pointer
+}
+
+body {
+	margin: 0 3%;
+	background-color: lightblue;
+}
+table {
+	width: 100%;
+	padding: 1rem;
+	border-width: 0;
+    th { color: darkslategrey }
+    thead {
+        color: darkred;
+        #menu_btn {
+            @include cursor();
+        }
+    }
+    tbody tr {
+        margin-bottom: .5rem;
+        background-color: lightbrown;
+        td {
+            padding: 1rem 0;
+            &:first-of-type { display: none }
+            // &:nth-of-type(2) { }
+            button {
+                visibility: hidden;
+                @include cursor();
+            }
+        }
+    }
+}
+
+nav {
+	position: absolute;
+	top: 20%;
+	width: 40%;
+	left: 30%;
+	background-color: cyan;
+	border-radius: 25px;
+    padding: 1rem;
+    z-index: 2;
+    #menu_general {
+        div {
+            display: flex;
+        }
+        svg {
+            @include cursor();
+        }
+    }
+    #contact_form {
+        input {
+            border-radius: .5rem;
+        }
+        h3, div.act {
+            text-align: center;
+        }
+        button {
+            @include cursor();
+        }
+    }
+}
+
+#shadow {
+    background-color: rgba(56, 56, 56, 0.6);
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    top: 0;
+    left: 0;
+}
