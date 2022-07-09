@@ -11,6 +11,8 @@ table {
 	padding: 1rem;
 	border-width: 0;
     th { color: darkslategrey }
+    // th:first-of-type,
+    td:first-of-type { display: none }
     thead {
         color: darkred;
         #menu_btn {
@@ -22,8 +24,6 @@ table {
         background-color: lightbrown;
         td {
             padding: 1rem 0;
-            &:first-of-type { display: none }
-            // &:nth-of-type(2) { }
             button {
                 visibility: hidden;
                 @include cursor();

@@ -11,6 +11,9 @@ table {
 table th {
   color: darkslategrey;
 }
+table td:first-of-type {
+  display: none;
+}
 table thead {
   color: darkred;
 }
@@ -23,9 +26,6 @@ table tbody tr {
 }
 table tbody tr td {
   padding: 1rem 0;
-}
-table tbody tr td:first-of-type {
-  display: none;
 }
 table tbody tr td button {
   visibility: hidden;
