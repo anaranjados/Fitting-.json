@@ -11,7 +11,7 @@
 	<thead>
 		<tr>
 			<th>&nbsp;</th>
-			<th><input type="text" placeholder="Поиск"></th>
+			<th><input type="text" id="search" placeholder="Поиск"></th>
 			<th>&nbsp;</th>
 			<th>Телефонный справочник</th>
 			<th>&nbsp;</th>
@@ -38,23 +38,26 @@
 </table>
 
 <nav id="menu_general" hidden>
-	<div>Добавить контакт</div>
-	<!--div>Импорт из JSON</div>
-	<div>Экспорт в JSON</div-->
-	<svg viewBox="0 0 25 25" width="25" height="25" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"> <path d="m10.25 5.75-4.5 4.5m0-4.5 4.5 4.5"/><circle cx="8" cy="8" r="6.25"/></svg> 
+	<section>
+		<div>Добавить контакт</div>
+		<div>Импорт из JSON</div>
+		<div>Экспорт в JSON</div>
+	</section>
+	<!--svg viewBox="0 0 25 25" width="25" height="25" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"> <path d="m10.25 5.75-4.5 4.5m0-4.5 4.5 4.5"/><circle cx="8" cy="8" r="6.25"/></svg--> 
+	<span></span>
 </nav>
 
 <nav id="contact_form" hidden>
 	<h3>Контакт</h3>
 	<section>
-		<input type="text" placeholder="id">
+		<input type="number" placeholder="id">
 		<input type="text" placeholder="Имя">
 		<input type="text" placeholder="Фамилия">
 		<input type="text" placeholder="Отчество">
-		<input type="text" placeholder="телефон">
+		<input type="tel" placeholder="телефон">
 		<input type="text" placeholder="компания">
 		<input type="text" placeholder="адрес">
-		<input type="text" placeholder="эл.почта">
+		<input type="email" placeholder="эл.почта">
 	</section>
 	<div class="act">
 		<button>Сохранить</button>

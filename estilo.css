@@ -35,28 +35,67 @@ table tbody tr td button {
 
 nav {
   position: absolute;
-  top: 15%;
-  left: 0;
-  right: 0;
-  margin: 0 auto;
-  width: -webkit-min-content;
-  width: -moz-min-content;
-  width: min-content;
-  background-color: wheat;
-  border-radius: 1rem;
   padding: 1rem;
   z-index: 2;
 }
-nav#menu_general div {
-  display: flex;
-  padding: 1rem 0;
-  width: 15rem;
+nav#menu_general {
+  top: 15%;
+  border-radius: 50%;
+  background-color: aqua;
+  width: 30rem;
+  height: 30rem;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
 }
-nav#menu_general div, nav#menu_general svg {
+nav#menu_general div {
   cursor: pointer;
+  position: relative;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+}
+nav#menu_general div:nth-child(1) {
+  top: 5rem;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+}
+nav#menu_general div:nth-child(2) {
+  top: 13.5rem;
+}
+nav#menu_general div:nth-child(3) {
+  float: right;
+  top: 12zrem;
 }
 nav#menu_general h3 {
   margin: 0;
+}
+nav#menu_general span {
+  position: relative;
+  top: 9rem;
+  border-radius: 50%;
+  background-color: rgba(1, 1, 1, 0.5);
+  width: 8rem;
+  height: 8rem;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  display: block;
+}
+nav#contact_form {
+  top: 15%;
+  border-radius: 5%;
+  background-color: beige;
+  width: -webkit-min-content;
+  width: -moz-min-content;
+  width: min-content;
+  height: -webkit-min-content;
+  height: -moz-min-content;
+  height: min-content;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
 }
 nav#contact_form input {
   border-radius: 0.5rem;
