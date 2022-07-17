@@ -1,103 +1,157 @@
-@mixin gm($t, $c, $r, $w) {
-    top: $t;
-    border-radius: $r;
-    background-color: $c;
-    width: $w;
-    height: $w;
-    left: 0;
-    right: 0;
-    margin: 0 auto;
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400&display=swap');
+
+@mixin gm_sect() {
+   position: absolute;
+   left: 0;
+   right: 0;
+   text-align: center;
+   margin: 0 auto;
+}
+
+// Columns
+.col-5 {
+   width: 5%
+}
+
+.col-15 {
+   width: 15%
+}
+
+.col-30 {
+   width: 30%
 }
 
 body {
-	margin: 0 3%;
-	background-color: #fefbdd;
+   background-color: #fefbdd;
+   font-family: 'Open Sans', sans-serif;
+   margin: 0;
 }
+
+header {
+   position: fixed;
+   width: 100%;
+   background-color: lightseagreen;
+
+   div.h-row-1 {
+      padding: .5%;
+      background-color: lightseagreen;
+      display: flex;
+
+      &>* {
+         width: 33.3%
+      }
+
+      input {
+         border-radius: .5rem;
+         padding: 0 1rem;
+         background-color: aliceblue;
+      }
+
+      h1 {
+         font-size: 1rem;
+         text-align: center;
+      }
+
+      svg#menu_btn {
+         height: 1rem;
+         padding: 1rem;
+         cursor: pointer;
+      }
+   }
+
+   div.h-row-2 {
+      display: flex;
+      padding: .5rem 2rem;
+      background-color: #9ef4ef;
+
+      svg {
+         height: 1rem
+      }
+   }
+}
+
 table {
-	width: 100%;
-	padding: 1rem;
-	border-width: 0;
-    th { color: #065959 }
-    // th:first-of-type,
-    td:first-of-type { display: none }
-    thead {
-        color: #171387;
-        #menu_btn {
+   width: 100%;
+   padding: 1rem;
+   border-width: 0;
+   td:first-of-type {
+      display: none
+   }
+   tbody tr {
+      margin-bottom: .5rem;
+      background-color: lightbrown;
+      td {
+         padding: 1rem 0;
+         color: #065959;
+         button {
+            visibility: hidden;
             cursor: pointer;
-        }
-    }
-    tbody tr {
-        margin-bottom: .5rem;
-        background-color: lightbrown;
-        td {
-            padding: 1rem 0;
-            color: #065959;
-            button {
-                visibility: hidden;
-                cursor: pointer;
-            }
-        }
-    }
+         }
+      }
+   }
 }
 
 nav {
-	position: absolute;
-    padding: 1rem;
-    z-index: 2;
-    &#menu_general {
-        @include gm(15%, aqua, 50%, 30rem);
-        div {
-            cursor: pointer;
-            position: relative;
-            width: max-content;
-            &:nth-child(1) {    // add contact
-                top: 5rem;
-                margin: 0 auto;
-                left: 0;
-                right: 0;
-            }
-            &:nth-child(2) { // import btn
-                top: 13.5rem
-            }
-            &:nth-child(3) {    // export btn
-                float: right;
-                top: 12zrem;
-            }
-        }
-        h3 {
-            margin: 0;
-        }
-        span {
-            position: relative;
-            @include gm(9rem, rgba(1, 1, 1, 0.5), 50%, 8rem);
-            display: block;
-        }
-    }
-    &#contact_form {
-        @include gm(15%, beige, 5%, min-content);
-        input {
-            border-radius: .5rem;
-            padding: .2rem;
-            margin: .5rem;
-            width: 15rem;
-            &:nth-of-type(1) { display: none }
-        }
-        section, h3, div.act {
-            text-align: center;
-            padding: .5rem 0;
-        }
-        button {
-            cursor: pointer;
-        }
-    }
+   padding: 1rem;
+   z-index: 2;
+   &#menu_general {
+      top: 15%;
+      position: absolute;
+      area {
+         cursor: pointer;
+      }
+      &, picture img {
+         @include gm_sect()
+      }
+   }
+
+   &#contact_form {
+      top: 10%;
+      border-radius: 5%;
+      background-color: beige;
+      width: min-content;
+      left: 0;
+      right: 0;
+      margin: 0 auto;
+      position: fixed;
+      input {
+         border-radius: .5rem;
+         padding: .2rem;
+         margin: .5rem;
+         width: 15rem;
+
+         &:nth-of-type(1) {
+            display: none
+         }
+      }
+
+      section,
+      h3,
+      div.act {
+         text-align: center;
+      }
+      section, div.act {
+         padding: .5rem 0;
+      }
+
+      button {
+         cursor: pointer;
+      }
+   }
 }
 
 #shadow {
-    background-color: rgba(56, 56, 56, 0.6);
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-    top: 0;
-    left: 0;
+   background-color: rgba(56, 56, 56, 0.6);
+   position: fixed;
+   width: 100%;
+   height: 100%;
+   z-index: 1;
+   top: 0;
+   left: 0;
 }
+/*
+#waiter {
+   margin: 0 auto;
+   display: block;
+}
+*/

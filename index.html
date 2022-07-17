@@ -1,36 +1,47 @@
-<!doctype html><html>
-<head>
-	<title>Spec complect tsentr</title>
+<!doctype html><html><head>
+	<title>Spets technology center</title>
 	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+   <link href="img/favicon.jpg" rel="icon" type="image/x-icon">
 	<link href="estilo.css" rel="stylesheet">
+	<meta name="author" content="Alejandro Proenza">
+</head><body>
 
-</head>
-<body>
+<header>
+	<div class="h-row-1">
+        <input id="search" type="text" placeholder="Поиск">
+        <h1>The phone book</h1>
+        <svg id="menu_btn" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000">
+            <g><path d="M220,10H80c-38.7,0-70,31.3-70,70v140c0,38.7,31.3,70,70,70h140c38.7,0,70-31.3,70-70V80C290,41.3,258.7,10,220,10z M570,10H430c-38.7,0-70,31.3-70,70v140c0,38.7,31.3,70,70,70h140c38.7,0,70-31.3,70-70V80C640,41.3,608.7,10,570,10z M920,10H780c-38.7,0-70,31.3-70,70v140c0,38.7,31.3,70,70,70h140c38.7,0,70-31.3,70-70V80C990,41.3,958.7,10,920,10z M220,360H80c-38.7,0-70,31.3-70,70v140c0,38.7,31.3,70,70,70h140c38.7,0,70-31.3,70-70V430C290,391.3,258.7,360,220,360z M570,360H430c-38.7,0-70,31.3-70,70v140c0,38.7,31.3,70,70,70h140c38.7,0,70-31.3,70-70V430C640,391.3,608.7,360,570,360z M920,360H780c-38.7,0-70,31.3-70,70v140c0,38.7,31.3,70,70,70h140c38.7,0,70-31.3,70-70V430C990,391.3,958.7,360,920,360z M220,710H80c-38.7,0-70,31.3-70,70v140c0,38.7,31.3,70,70,70h140c38.7,0,70-31.3,70-70V780C290,741.3,258.7,710,220,710z M570,710H430c-38.7,0-70,31.3-70,70v140c0,38.7,31.3,70,70,70h140c38.7,0,70-31.3,70-70V780C640,741.3,608.7,710,570,710z M920,710H780c-38.7,0-70,31.3-70,70v140c0,38.7,31.3,70,70,70h140c38.7,0,70-31.3,70-70V780C990,741.3,958.7,710,920,710z"/></g>
+        </svg>
+    </div>
+    <div class="h-row-2">
+        <div hidden> </div>
+        <div class="col-5">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M6 3.5L3.5 3.5L3.5 10.5L20.5 10.5V3.5L10 3.5M17 20.5H20.5V13.5L3.5 13.5L3.5 20.5H13" stroke="#001A72" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/> </svg>
+        </div>
+        <div class="col-30">
+            Имя
+        </div>
+        <div class="col-15">
+            Телефон
+        </div>
+        <div class="col-15">
+            Компания
+        </div>
+        <div class="col-15">
+            Адрес
+        </div>
+        <div class="col-15">
+            Эл. почта
+        </div>
+        <div class="col-5">
+            &nbsp;
+        </div>
+    </div>
+</header>
+
 <table>
-	<thead>
-		<tr>
-			<th>&nbsp;</th>
-			<th><input type="text" id="search" placeholder="Поиск"></th>
-			<th>&nbsp;</th>
-			<th>Телефонный справочник</th>
-			<th>&nbsp;</th>
-			<th> <svg id="menu_btn" width="25" height="25" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"> <path d="M220,10H80c-38.7,0-70,31.3-70,70v140c0,38.7,31.3,70,70,70h140c38.7,0,70-31.3,70-70V80C290,41.3,258.7,10,220,10z M570,10H430c-38.7,0-70,31.3-70,70v140c0,38.7,31.3,70,70,70h140c38.7,0,70-31.3,70-70V80C640,41.3,608.7,10,570,10z M920,10H780c-38.7,0-70,31.3-70,70v140c0,38.7,31.3,70,70,70h140c38.7,0,70-31.3,70-70V80C990,41.3,958.7,10,920,10z M220,360H80c-38.7,0-70,31.3-70,70v140c0,38.7,31.3,70,70,70h140c38.7,0,70-31.3,70-70V430C290,391.3,258.7,360,220,360z M570,360H430c-38.7,0-70,31.3-70,70v140c0,38.7,31.3,70,70,70h140c38.7,0,70-31.3,70-70V430C640,391.3,608.7,360,570,360z M920,360H780c-38.7,0-70,31.3-70,70v140c0,38.7,31.3,70,70,70h140c38.7,0,70-31.3,70-70V430C990,391.3,958.7,360,920,360z M220,710H80c-38.7,0-70,31.3-70,70v140c0,38.7,31.3,70,70,70h140c38.7,0,70-31.3,70-70V780C290,741.3,258.7,710,220,710z M570,710H430c-38.7,0-70,31.3-70,70v140c0,38.7,31.3,70,70,70h140c38.7,0,70-31.3,70-70V780C640,741.3,608.7,710,570,710z M920,710H780c-38.7,0-70,31.3-70,70v140c0,38.7,31.3,70,70,70h140c38.7,0,70-31.3,70-70V780C990,741.3,958.7,710,920,710z"/> </svg> </th>
-			<th>&nbsp;</th>
-			<th>&nbsp;</th>
-		</tr>
-
-		<tr>
-			<td> </td>
-			<td><svg width="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M6 3.5L3.5 3.5L3.5 10.5L20.5 10.5V3.5L10 3.5M17 20.5H20.5V13.5L3.5 13.5L3.5 20.5H13" stroke="#001A72" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/> </svg></td>
-			<td>ФИО</td>
-			<td>телефон</td>
-			<td>компания</td>
-			<td>адрес</td>
-			<td>Email</td>
-			<td> </td>
-		</tr>
-	</thead>
 
 	<tbody>
 		
@@ -38,13 +49,26 @@
 </table>
 
 <nav id="menu_general" hidden>
-	<section>
+	<section hidden>
 		<div>Добавить контакт</div>
 		<div>Импорт из JSON</div>
 		<div>Экспорт в JSON</div>
 	</section>
-	<!--svg viewBox="0 0 25 25" width="25" height="25" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"> <path d="m10.25 5.75-4.5 4.5m0-4.5 4.5 4.5"/><circle cx="8" cy="8" r="6.25"/></svg--> 
-	<span></span>
+	<!--svg hidden viewBox="0 0 25 25" width="25" height="25" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"> <path d="m10.25 5.75-4.5 4.5m0-4.5 4.5 4.5"/><circle cx="8" cy="8" r="6.25"/></svg-->
+	<span hidden></span>
+	<picture>
+		<img src="./img/map_.png" alt="menu" usemap="#menu_map">
+		<img src="./img/sector_top.png" alt="top" hidden>
+		<img src="./img/sector_right.png" alt="right" hidden>
+		<img src="./img/sector_bottom.png" alt="bottom" hidden>
+		<img src="./img/sector_left.png" alt="left" hidden>
+	</picture>
+	<map name="menu_map">
+		<area shape="poly" coords="67,61,208,0,369,59,260,171,218,156,176,171" alt="top sector">
+		<area shape="poly" coords="264,176,374,67,436,216,374,367,264,259,280,217" alt="right sector">
+		<area shape="poly" coords="176,265,215,279,259,264,368,374,214,435,66,374" alt="bottom sector">
+		<area shape="poly" coords="61,66,170,176,156,221,170,259,59,369,0,214" alt="left sector">
+	</map>
 </nav>
 
 <nav id="contact_form" hidden>
