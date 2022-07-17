@@ -1,7 +1,7 @@
 /* "use strict"
 window.onload=()=> {
 */
-	let entity, n, c = [
+	let entities, n, c = [
 			{
 				id: 1,
 				name: "Kristina",
@@ -53,8 +53,8 @@ window.onload=()=> {
 				surname: "Veshiy",
 				lastname: "",
 				tel: "+7",
-				company: "Sviatoy",
-				addr: "Magadan",
+				company: "Regent",
+				addr: "Kiev",
 				email: "o.vesh@sibir.su"
 			}, {
 				id: 7,
@@ -132,31 +132,30 @@ window.onload=()=> {
 	function qsa(a) {
 		return document.querySelectorAll(a)
 	}
-	/*
-	function sleep(msec) {
-		return new Promise((resolve, reject) => {
-		  setTimeout(resolve, msec)
-		})
-	}
-	*/
 	// end Helpers
 	
 	const
 		cf		   =  qs('#contact_form'),
 		cf_inp   =  cf.children[1].children,
 		cf_save  =  qs('#contact_form button:nth-child(1)'),
-			// cf_del =   qs('#contact_form button:nth-child(2)'),
-		cf_cnl   = qs('#contact_form button:nth-child(2)'),	// (3)
+		cf_cnl   = qs('#contact_form button:nth-child(2)'),
 		gm       = qs('#menu_general'),
 		gm_init  = qs('#menu_btn'),
-		// gm_close = qs('#menu_general svg'),
-		gm_add   = qs('#menu_general div:nth-child(1)'),
-			/* gm_imp = qs('#menu_general div')[1],
-				gm_exp = qs('#menu_general div')[2], */
+		
+		gm_add   = qs('#menu_general area[alt="top sector"]'),
+		gm_exp   = qs('#menu_general area[alt="right sector"]'),
+		gm_imp   = qs('#menu_general area[alt="left sector"]'),
+		gm_close = qs('#menu_general area[alt="bottom sector"]'),
+		
+		gm_top_img = qs('#menu_general img[alt=top]'),
+		gm_rgt_img = qs('#menu_general img[alt=right]'),
+		gm_btm_img = qs('#menu_general img[alt=bottom]'),
+		gm_lft_img = qs('#menu_general img[alt=left]'),
+		
 		sh		   = qs('#shadow'),
-		tab_body = qs('tbody'),
-		tab_col_n= qs('thead tr').childElementCount,
-		sch 		= qs('#search'),
+		tab_body   = qs('tbody'),
+		tab_col_n  = qs('.h-row-2').childElementCount, // qs('thead tr').childElementCount,
+		sch 	   = qs('#search'),
 		enty_dfl = 7,
 		enty_step= 2,
 		max_H 	= document.body.scrollHeight || document.body.offsetHeight || document.clientHeight || document.scrollHeight || document.offsetHeight,
@@ -173,10 +172,16 @@ window.onload=()=> {
 				else if (a.name < b.name)
 					res = -1
 			}
-			else { // if (a.surname.length !== 0 && b.surname.length !== 0) {   (it's already checked on saving)
-				if (a.surname > b.name)
+			else if (a.surname.length !== 0 && b.name.length !== 0) {
+				if (a.surname > b.name )
 					res = 1	 
 				else if (a.surname < b.name)
+					res = -1
+			}
+			else if (a.name.length !== 0 && b.surname.length !== 0) {
+				if (a.name > b.surname )
+					res = 1	 
+				else if (a.name < b.surname)
 					res = -1
 			}
 			return res;
@@ -184,12 +189,13 @@ window.onload=()=> {
 
 		// (re) Drawing the table
 		tab_body.innerHTML = ''
-		if (enty === Object) {	// search way
+		if( typeof(enty) === 'object' ) {	// search way
 			n = enty
 			console.log('fired object condition')
 		}
 		else
 			n = c
+
 		n.forEach(rec => {
 			const t = {
 				row: document.createElement('tr'),
@@ -271,62 +277,66 @@ window.onload=()=> {
 				apply_c(ind)
 			}
 			hide(cf, sh)
-			init(entity)
+			init(entities)
 		}
 	}
-
-	/* cf_del.onclick= ()=> {	// delete
-		const ind = parseInt(cf_inp[0].value)
-		for( let i in c ) {
-			if( c[i].id === ind)
-				delete c[i]
-		}
-		init(entity)
-		hide(cf, sh)
-		
-	}
-	*/
 	cf_cnl.onclick= ()=>		// cancel
-		hide(cf, /* cf_del,*/ sh)
-	
+		hide(cf, sh)
 	sh.onclick = ()=>
-		hide(gm,cf,sh)
+		hide(gm, cf, sh)
 
 	
 	// General menu
 	gm_init.onclick = ()=>
 		show(gm, sh)
-		
-	gm_add.onclick =()=> {	// add contact
+	
+	gm_add.onmouseover= ()=>
+		show(gm_top_img)
+	gm_add.onmouseout= ()=>
+		hide(gm_top_img)
+	gm_top_img.onclick= ()=> {	// add contact
 		show(cf)
 		hide(gm)
 		cf.firstElementChild.innerText = 'Новый контакт'
 		save_c('insert')
 	}
-		//	gm_imp.onclick =()=> 	// import from JSON
-		//	gm_exp.onclick =()=> 	// export to JSON
 
-	// gm_close.onclick =()=>	// close general menu
-		// hide(gm, sh)
+	gm_imp.onmouseover= ()=>
+		show(gm_lft_img)
+	gm_imp.onmouseout= ()=>
+		hide(gm_lft_img)
+	gm_exp.onmouseover= ()=>
+		show(gm_rgt_img)
+	gm_exp.onmouseout= ()=>
+		hide(gm_rgt_img)
+
+	//	gm_lft_img.onclick =()=> 	// import from JSON
+	//	gm_rgt_img.onclick =()=> 	// export to JSON
+	
+	gm_close.onmouseover= ()=>
+		show(gm_btm_img)
+	gm_close.onmouseout= ()=>
+		hide(gm_btm_img)
+	gm_btm_img.onclick =()=>
+		hide(gm, sh)
 
 
-	init(entity = enty_dfl)
+	init(entities = enty_dfl)
 
 
 	window.onscroll= async ()=> {
 		if( window.scrollY >= max_H ) {
-			entity += enty_step
-			setTimeout(4000, init(entity))
-			console.debug( entity, '. Position: ', parseInt(window.scrollY), ' | Height: ', max_H)
-		//	init(entity)
-		}
-		else {
-			console.info( 'To bottom (px): ', Math.abs(window.scrollY - max_H))
+			let p = new Promise((res, rej) => {
+				setTimeout( () => res(), 2000)
+			})
+			await p
+			entities += enty_step
+			init(entities)
 		}
 	}
 
 	sch.onkeypress= ()=> {
-
+		
 	}
 
 // }
