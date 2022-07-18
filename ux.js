@@ -1,6 +1,5 @@
-/* "use strict"
+"use strict"
 window.onload=()=> {
-*/
 	let entities, n, c = [
 			{
 				id: 1,
@@ -351,4 +350,4 @@ window.onload=()=> {
 		
 	}
 
-// }
+}
