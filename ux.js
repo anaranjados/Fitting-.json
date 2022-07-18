@@ -5,7 +5,7 @@ window.onload=()=> {
 			{
 				id: 1,
 				name: "Celestina",
-				surname: "Slolbovaya",
+				surname: "Stolbovaya",
 				lastname: "",
 				tel: "+4 8134 385123",
 				company: "Hlebopek",
@@ -14,12 +14,12 @@ window.onload=()=> {
 			}, {
 				id: 2,
 				name: "",
-				surname: "Zanoza",
+				surname: "Zorro",
 				lastname: "",
 				tel: "+67 8134 385123",
 				company: "Kinolog",
 				addr: "Sochi",
-				email: "s.ust@sibir.su"
+				email: "alejandro@spb.ru"
 			}, {
 				id: 3,
 				name: "Elena",
@@ -41,7 +41,7 @@ window.onload=()=> {
 			}, {
 				id: 5,
 				name: "Anna",
-				surname: "Lapushkina",
+				surname: "Deremina",
 				lastname: "Olegovna",
 				tel: "+7 8134 385123",
 				company: "Deklarant",
@@ -68,15 +68,15 @@ window.onload=()=> {
 			}, {
 				id: 8,
 				name: "Natalia",
-				surname: "mama",
+				surname: "",
 				lastname: "Sergeevna",
 				tel: "+7 8134 385123",
 				company: "BIM",
 				addr: "Leningrad",
-				email: "n.mama@vostok.su"
+				email: "n@vostok.su"
 			}, {
 				id: 9,
-				name: "Abram",
+				name: "Uriy",
 				surname: "Lapushkin",
 				lastname: "Olegovich",
 				tel: "+7 8134 385123",
@@ -113,12 +113,12 @@ window.onload=()=> {
 			}, {
 				id: 13,
 				name: "",
-				surname: "Zanoza",
+				surname: "Zorro",
 				lastname: "",
 				tel: "+27 8134 385123",
-				company: "Kinokritik",
+				company: "Mushketer",
 				addr: "Sahalin",
-				email: "v.druzniy@sibir.su"
+				email: "a.sanz@sibir.su"
 			}
 		]
 	
@@ -135,6 +135,7 @@ window.onload=()=> {
 	}
 	function apply_c(r) {
 		c[r] = {
+         id:       r,
 			name:		 cf_inp[1].value,
 			surname:  cf_inp[2].value,
 			lastname: cf_inp[3].value,
@@ -153,9 +154,9 @@ window.onload=()=> {
 	// end Helpers
 	
 	const
-		cf		   =  qs('#contact_form'),
-		cf_inp   =  cf.children[1].children,   // all input fields
-		cf_save  =  qs('#contact_form button:nth-child(1)'),  // save
+		cf		   = qs('#contact_form'),
+		cf_inp   = cf.children[1].children,   // all input fields
+		cf_save  = qs('#contact_form button:nth-child(1)'),  // save
 		cf_cnl   = qs('#contact_form button:nth-child(2)'),   // cancel
 		gm       = qs('#menu_general'),
 		gm_init  = qs('#menu_btn'),
@@ -172,7 +173,7 @@ window.onload=()=> {
 		
 		sh		   = qs('#shadow'),
 		tab_body = qs('tbody'),
-		tab_col_n= qs('.h-row-2').childElementCount, // qs('thead tr').childElementCount,
+		tab_col_n= qs('header .columns').childElementCount, // qs('thead tr').childElementCount,
 		sch 	   = qs('#search'),
 		enty_dfl = 7,
 		enty_step= 2,
@@ -187,21 +188,21 @@ window.onload=()=> {
 		c.sort( (a,b)=>{
 			let res = 0
 			if (a.name.length !== 0 && b.name.length !== 0) {
-				if (a.name > b.name)
+				if (a.name.toLocaleLowerCase() > b.name.toLocaleLowerCase())
 					res = 1	 
-				else if (a.name < b.name)
+				else if (a.name.toLocaleLowerCase() < b.name.toLocaleLowerCase())
 					res = -1
 			}
 			else if (a.surname.length !== 0 && b.name.length !== 0) {
-				if (a.surname > b.name )
+				if (a.surname.toLocaleLowerCase() > b.name.toLocaleLowerCase() )
 					res = 1	 
-				else if (a.surname < b.name)
+				else if (a.surname.toLocaleLowerCase() < b.name.toLocaleLowerCase())
 					res = -1
 			}
 			else if (a.name.length !== 0 && b.surname.length !== 0) {
-				if (a.name > b.surname )
+				if (a.name.toLocaleLowerCase() > b.surname.toLocaleLowerCase() )
 					res = 1	 
-				else if (a.name < b.surname)
+				else if (a.name.toLocaleLowerCase() < b.surname.toLocaleLowerCase())
 					res = -1
 			}
 			return res;
@@ -211,7 +212,7 @@ window.onload=()=> {
 		tab_body.innerHTML = ''
 		if( typeof(enty) === 'object' ) {	// search way
 			n = enty
-			console.log('fired object condition')
+			console.log('fired search')
 		}
 		else
 			n = c
@@ -246,14 +247,12 @@ window.onload=()=> {
 			else if ( rec.id <= enty_dfl )	// initial draw
 				tab_body.appendChild( t.row )
 		})
-
-		
-		// Assigning edit btn for each row
-		const rows = qsa('tbody tr'),
+		const rows = qsa('tbody tr'),    // Action edit btn for each row
 		   	btn = qsa('tbody button')
 		for( let i=0; i<rows.length; i++ ) {
 			btn[i].onclick= (ev)=>	{
-				show(cf,/* cf_del, */ sh)
+				show(cf, sh)
+            location.href += "#contact_form"
 				cf.firstElementChild.innerText = 'Правка контакта'
 				const ind = parseInt(ev.target.parentElement.parentElement.firstElementChild.innerText),
 						choice = c.find( ({id})=> id === ind )
@@ -263,7 +262,6 @@ window.onload=()=> {
 
 				save_c('alter')
 			}
-
 			rows[i].onmouseover= ()=>	// edit button, focus
 				btn[i].style.visibility = 'visible'
 			rows[i].onmouseout = ()=>		// edit button, out of focus
@@ -276,28 +274,24 @@ window.onload=()=> {
 		cf_save.onclick= ()=> {
 			if (flag === 'insert') {
 				let next_i = 0;
-				for (var i in c) {
-					if ( c[i].id > next_i )
-							next_i = c[i].id +1
-					else
-						break
+				for (var i in c) {         
+					if ( c[i].id >= next_i )
+							next_i = c[i].id +1   // set next id value for Object
 				}
-				if (cf_inp[0].value !== '' || cf_inp[1] !=='') {
-					apply_c(c.length)
-					hide(cf, sh)
+				if (cf_inp[0].value.length > 0 || cf_inp[1].value.length > 0) {
+					apply_c(next_i)
+               entities += 1
 				}
 				else
 					alert('Поле Фамилия или Имя обязательны при заполнении.')	
 			}
 			else if( flag === 'alter' ) {
 				const ind = parseInt(cf_inp[0].value)
-				console.log( c[ind].id)
 				choice = c.find( ({id})=> id === ind )
-				console.log(choice)
 				apply_c(ind)
 			}
-			hide(cf, sh)
 			init(entities)
+         hide(cf, sh)
 		}
 	}
 	cf_cnl.onclick= ()=>		// cancel
@@ -316,6 +310,7 @@ window.onload=()=> {
 		hide(gm_top_img)
 	gm_top_img.onclick= ()=> {	// add contact
 		show(cf)
+      location.href +="#contact_form"
 		hide(gm)
 		cf.firstElementChild.innerText = 'Новый контакт'
 		save_c('insert')
@@ -348,9 +343,7 @@ window.onload=()=> {
 		if( window.scrollY >= max_H ) {
 			let p = new Promise( (resolve, reject) => setTimeout( () => resolve(), 1200) )
          await p
-         // document.body.innerHTML += wait_icn
          init(entities += enty_step)
-         // qs('#waiter').remove()
 		}
 	}
 
