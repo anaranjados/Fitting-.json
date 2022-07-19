@@ -9,7 +9,7 @@
 
 <header>
 	<div id="heading">
-        <input id="search" type="text" placeholder="Поиск">
+        <input id="search" type="text" placeholder="Type to search & press Enter">
         <h1>The phone book</h1>
         <svg id="menu_btn" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000">
             <g><path d="M220,10H80c-38.7,0-70,31.3-70,70v140c0,38.7,31.3,70,70,70h140c38.7,0,70-31.3,70-70V80C290,41.3,258.7,10,220,10z M570,10H430c-38.7,0-70,31.3-70,70v140c0,38.7,31.3,70,70,70h140c38.7,0,70-31.3,70-70V80C640,41.3,608.7,10,570,10z M920,10H780c-38.7,0-70,31.3-70,70v140c0,38.7,31.3,70,70,70h140c38.7,0,70-31.3,70-70V80C990,41.3,958.7,10,920,10z M220,360H80c-38.7,0-70,31.3-70,70v140c0,38.7,31.3,70,70,70h140c38.7,0,70-31.3,70-70V430C290,391.3,258.7,360,220,360z M570,360H430c-38.7,0-70,31.3-70,70v140c0,38.7,31.3,70,70,70h140c38.7,0,70-31.3,70-70V430C640,391.3,608.7,360,570,360z M920,360H780c-38.7,0-70,31.3-70,70v140c0,38.7,31.3,70,70,70h140c38.7,0,70-31.3,70-70V430C990,391.3,958.7,360,920,360z M220,710H80c-38.7,0-70,31.3-70,70v140c0,38.7,31.3,70,70,70h140c38.7,0,70-31.3,70-70V780C290,741.3,258.7,710,220,710z M570,710H430c-38.7,0-70,31.3-70,70v140c0,38.7,31.3,70,70,70h140c38.7,0,70-31.3,70-70V780C640,741.3,608.7,710,570,710z M920,710H780c-38.7,0-70,31.3-70,70v140c0,38.7,31.3,70,70,70h140c38.7,0,70-31.3,70-70V780C990,741.3,958.7,710,920,710z"/></g>
@@ -40,19 +40,10 @@
 </header>
 
 <table>
-
-	<tbody>
-		
-	</tbody>
+	<tbody></tbody>
 </table>
 
 <nav id="menu_general" hidden>
-	<section hidden>
-		<div>Добавить контакт</div>
-		<div>Импорт из JSON</div>
-		<div>Экспорт в JSON</div>
-	</section>
-	<!--svg hidden viewBox="0 0 25 25" width="25" height="25" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"> <path d="m10.25 5.75-4.5 4.5m0-4.5 4.5 4.5"/><circle cx="8" cy="8" r="6.25"/></svg-->
 	<span hidden></span>
 	<picture>
 		<img src="./img/map_.png" alt="menu" usemap="#menu_map">
@@ -83,12 +74,11 @@
 	</section>
 	<div class="act">
 		<button>Сохранить</button>
-		<!--button>Удалить</button-->
 		<button>Отмена</button>
 	</div>
 </nav>
 
-<section id="shadow" hidden>&nbsp;</section>
+<span id="shadow" hidden></span>
 
 <script defer src="ux.js"></script>
 </body>

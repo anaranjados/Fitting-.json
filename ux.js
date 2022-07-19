@@ -43,7 +43,7 @@ let entities, n, c = [
          tel: "+7 8134 385123",
          company: "Deklarant",
          addr: "Izborsk",
-         email: "a.lap@sibir.su"
+         email: "a.der@sibir.su"
       }, {
          id: 6,
          name: "Oleg",
@@ -79,7 +79,7 @@ let entities, n, c = [
          tel: "+7 8134 385123",
          company: "Deklarant",
          addr: "Peterburg",
-         email: "s.lap@spb.ru"
+         email: "u.lap@spb.ru"
       }, {
          id: 10,
          name: "Parsuna",
@@ -100,13 +100,13 @@ let entities, n, c = [
          email: "m.zhukova@len.ru"
       }, {
          id: 12,
-         name: "Celestina",
-         surname: "Stolbovaya",
-         lastname: "Vasilievna",
+         name: "Elestina",
+         surname: "Voskresenskaya",
+         lastname: "Aleksandrovna",
          tel: "+4 8134 385123",
-         company: "Hlebopek",
-         addr: "Vipori",
-         email: "c.stolb@sibir.su"
+         company: "Konevod",
+         addr: "Elista",
+         email: "e.voskr@sibir.su"
       }, {
          id: 13,
          name: "",
@@ -121,16 +121,17 @@ let entities, n, c = [
 
 // Helpers
 function hide() {
-   for (let i in arguments)
+   for (const i in arguments)
       arguments[i].setAttribute('hidden', '')
-   for (let j in cf_inp)
+   for (const j in cf_inp)
       cf_inp[j].value = ''
 }
 function show() {
-   for (let i in arguments)
+   for (const i in arguments)
       arguments[i].removeAttribute('hidden')
 }
 function apply_c(r) {
+   r = parseInt(r)
    c[r] = {
       id:       r,
       name:		 cf_inp[1].value,
@@ -181,8 +182,13 @@ const
    
 
 function init(enty) {
+   if( typeof(enty) === 'number' )
+      n = c
+   else if( typeof(enty) === 'object' )	// search way
+      n = enty
+   
    // Sorting the object
-   c.sort( (a,b)=>{
+   n.sort( (a,b)=>{
       let res = 0
       if (a.name.length !== 0 && b.name.length !== 0) {
          if (a.name.toLocaleLowerCase() > b.name.toLocaleLowerCase())
@@ -207,20 +213,13 @@ function init(enty) {
 
    // (re) Drawing the table
    tab_body.innerHTML = ''
-   if( typeof(enty) === 'object' ) {	// search way
-      n = enty
-      console.log('fired search')
-   }
-   else
-      n = c
-
    n.forEach(rec => {
       const t = {
          row: document.createElement('tr'),
          data: new Array
       }
       function fill_row() {
-         for (let i in arguments)
+         for (const i in arguments)
             t.data[i].innerHTML = arguments[i]
       }
       for (let j=0; j<tab_col_n; j++)
@@ -239,11 +238,9 @@ function init(enty) {
          )
          t.row.appendChild( t.data[j] )
       }
-      if (rec.id <= enty)					// scrolling draw
-         tab_body.appendChild( t.row )
-      else if ( rec.id <= enty_dfl )	// initial draw
-         tab_body.appendChild( t.row )
+      tab_body.appendChild( t.row )   
    })
+
    const rows = qsa('tbody tr'),    // Action edit btn for each row
          btn = qsa('tbody button')
    for( let i=0; i<rows.length; i++ ) {
@@ -254,7 +251,7 @@ function init(enty) {
          const ind = parseInt(ev.target.parentElement.parentElement.firstElementChild.innerText),
                choice = c.find( ({id})=> id === ind )
          
-         for (let j in cf_inp)
+         for (const j in cf_inp)
             cf_inp[j].value = Object.values(choice)[j]
 
          save_c('alter')
@@ -269,27 +266,26 @@ function init(enty) {
 // Contact form
 function save_c(flag) {
    cf_save.onclick= ()=> {
-      if (flag === 'insert') {
-         let next_i = 0;
-         for (var i in c) {         
-            if ( c[i].id >= next_i )
-                  next_i = c[i].id +1   // set next id value for Object
-         }
-         if (cf_inp[0].value.length > 0 || cf_inp[1].value.length > 0) {
+      if (cf_inp[0].value.length > 0 || cf_inp[1].value.length > 0) {
+         if (flag === 'insert') {
+            let next_i = 0;
+            for (var i in c) {         
+               if ( c[i].id >= next_i )
+                     next_i = c[i].id +1   // set next id value for Object
+            }
             apply_c(next_i)
             entities += 1
          }
-         else
-            alert('Поле Фамилия или Имя обязательны при заполнении.')	
+         else if( flag === 'alter' ) { 
+               const ind = parseInt(cf_inp[0].value),
+                     res = c.findIndex(({id})=> id === ind)
+               apply_c( res )
+         }
+         init(entities)
+         hide(cf, sh)   
       }
-      else if( flag === 'alter' ) {
-         const ind = parseInt(cf_inp[0].value)
-         choice = c.find( ({id})=> id === ind )
-         apply_c(ind)
-      }
-      init(entities)
-      hide(cf, sh)
-      
+      else
+         alert('Поле Фамилия или Имя обязательны при заполнении.')
    }
 }
 cf_cnl.onclick= ()=>		// cancel
@@ -339,12 +335,32 @@ init(entities = enty_dfl)
 
 window.onscroll= async ()=> {
    if( window.scrollY >= max_H ) {
-      let p = new Promise( (resolve, reject) => setTimeout( () => resolve(), 1200) )
+      let p = new Promise( (resolve, reject) =>
+               setTimeout( () => resolve(), 1200)
+              )
       await p
       init(entities += enty_step)
    }
 }
 
+
 sch.onkeypress= ()=> {
+   const s = sch.value.toLocaleLowerCase(),
+      found =
+         c.filter(e => {
+            if (
+                e.name.    toLocaleLowerCase().includes(s) ||
+                e.surname. toLocaleLowerCase().includes(s) ||
+                e.lastname.toLocaleLowerCase().includes(s) ||
+                e.addr.    toLocaleLowerCase().includes(s) ||
+                e.company. toLocaleLowerCase().includes(s) ||
+                e.email.   toLocaleLowerCase().includes(s) ||
+                e.tel.     toLocaleLowerCase().includes(s)
+               )
+            return e
+   })
    
+   console.log( found )
+   
+   init(found)
 }
