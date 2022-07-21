@@ -334,17 +334,13 @@ init(entities = enty_dfl)
 
 
 window.onscroll= async ()=> {
-   const max_H 	= window.innerHeight /4 //document.body.scrollHeight || document.body.offsetHeight
+   const max_H 	= window.innerHeight /4
    if( window.scrollY >= max_H ) {
-      console.log('Reached bottom.')
       let p = new Promise( (resolve, reject) =>
                setTimeout( () => resolve(), 1200)
               )
       await p
       init(entities += enty_step)
-   }
-   else {
-      console.log('To bottom: ', Math.abs(max_H -window.scrollY))
    }
 }
 
